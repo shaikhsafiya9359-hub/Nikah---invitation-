@@ -1,56 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nikah Invitation</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nikah Invitation</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="app">
+    <section class="envelope-page" id="envelopePage">
+      <div class="envelope-shell" id="envelope" onclick="openInvitation()">
+        <div class="envelope-flap"></div>
+        <div class="envelope-pocket"></div>
+        <div class="wax-seal">✦</div>
+        <div class="tap-text">Tap To Open</div>
+      </div>
+      <p class="hint">Royal Nikah Invitation</p>
+    </section>
 
-<div class="envelope" onclick="openInvitation()">
-
-    <div class="wax-seal">
-        ﷽
-    </div>
-
-    <div class="flap"></div>
-
-    <div class="letter">
-
-        <h1>✨ Nikah Invitation ✨</h1>
-
-        <h2>Bismillahir Rahmanir Rahim</h2>
-
-        <p>
-        Together with our families,
-        we joyfully invite you to
-        celebrate our Nikah.
+    <section class="invitation-page hidden" id="invitationPage">
+      <div class="card">
+        <div class="card-top">Bismillahir Rahmanir Rahim</div>
+        <h1>Nikah Invitation</h1>
+        <p class="subtitle">
+          Together with our families, we joyfully invite you to celebrate our Nikah.
         </p>
 
-        <button class="open-btn">
-            Open Invitation
-        </button>
+        <div class="names">
+          <div>
+            <span>Bride</span>
+            <strong>Daughter of Haji Mohd. Zahid Shaikh</strong>
+          </div>
+          <div>
+            <span>Groom</span>
+            <strong>Hafiz Md Umar Shaikh</strong>
+          </div>
+        </div>
 
-    </div>
+        <div class="scratch-box" id="scratchBox" onclick="revealDate()">
+          <div class="scratch-cover" id="scratchCover">Scratch To Reveal Date</div>
+          <div class="scratch-date" id="scratchDate">Monday, 9th Nov 2026</div>
+        </div>
 
-</div>
+        <div class="countdown-wrap">
+          <p class="countdown-label">Countdown to Nikah</p>
+          <div class="countdown" id="countdown">--:--:--:--</div>
+        </div>
 
-<script>
+        <div class="details">
+          <p><strong>Time:</strong> 7:00 PM</p>
+          <p><strong>Dinner:</strong> After Nikah</p>
+          <p><strong>Venue:</strong> Galaxy Marriage Ground, Opp. Baitus Salam Masjid, Naigaon Road, Bhiwandi, Thane</p>
+        </div>
 
-function openInvitation(){
+        <a
+          class="map-btn"
+          href="https://www.google.com/maps/search/?api=1&query=Galaxy+Marriage+Ground,+Opp.+Baitus+Salam+Masjid,+Naigaon+Road,+Bhiwandi,+Thane"
+          target="_blank"
+          rel="noopener"
+        >
+          Open in Google Maps
+        </a>
 
-document.querySelector(".envelope").classList.add("opened");
+        <p class="footer">No gifts, only blessings</p>
+      </div>
+    </section>
+  </div>
 
-setTimeout(()=>{
-window.location.href="Nikah invitation";
-},1200);
-
-}
-
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
