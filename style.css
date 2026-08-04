@@ -1,348 +1,527 @@
+/* ==========================
+   ROYAL NIKAH INVITATION
+
+========================== */
+
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-:root{
-  --maroon:#5b0012;
-  --maroon-dark:#2b0000;
-  --gold:#d4af37;
-  --gold-soft:#f3df8a;
-  --offwhite:#f8efe4;
-  --card:#fff7ef;
-  --text:#4b1a1a;
+html{
+scroll-behavior:smooth;
 }
 
 body{
-  min-height:100vh;
-  font-family:Georgia, serif;
-  background:
-    radial-gradient(circle at top, rgba(212,175,55,.12), transparent 35%),
-    linear-gradient(135deg, #2b0000, #4b0010 55%, #1a0000);
-  color:#fff;
-  overflow:hidden;
+
+background:#2b000b;
+
+font-family:'Poppins',sans-serif;
+
+color:#fff;
+
+overflow-x:hidden;
+
 }
 
-#app{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
+
+/* Loading Screen */
+
+#loading{
+
+position:fixed;
+
+width:100%;
+
+height:100vh;
+
+background:#120004;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+z-index:9999;
+
 }
 
-.hidden{
-  display:none !important;
+.loading-logo{
+
+font-size:70px;
+
+color:#d4af37;
+
+animation:glow 2s infinite;
+
 }
 
-.envelope-page{
-  text-align:center;
+#loading p{
+
+margin-top:20px;
+
+letter-spacing:5px;
+
+font-size:15px;
+
+color:white;
+
 }
 
-.envelope-shell{
-  width:320px;
-  height:220px;
-  position:relative;
-  cursor:pointer;
-  perspective:1000px;
-  animation:float 3s ease-in-out infinite;
-  filter:drop-shadow(0 18px 28px rgba(0,0,0,.35));
+
+/* Envelope Page */
+
+#envelopePage{
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+background:
+
+linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),
+
+url("images/bg.jpg");
+
+background-size:cover;
+
+background-position:center;
+
+position:relative;
+
+overflow:hidden;
+
 }
 
-.envelope-pocket{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(145deg, #5e0018, #8b1028);
-  border:3px solid var(--gold);
-  border-radius:16px;
-  overflow:hidden;
+.backgroundGlow{
+
+position:absolute;
+
+width:500px;
+
+height:500px;
+
+border-radius:50%;
+
+background:#ffd70020;
+
+filter:blur(100px);
+
+animation:rotateGlow 12s linear infinite;
+
 }
 
-.envelope-pocket::before{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:0;
-  width:100%;
-  height:110px;
-  background:linear-gradient(145deg, rgba(255,255,255,.08), rgba(0,0,0,.06));
-  clip-path:polygon(0 0, 100% 0, 50% 100%);
+.envelopeWrapper{
+
+position:relative;
+
+z-index:5;
+
+text-align:center;
+
 }
 
-.envelope-flap{
-  position:absolute;
-  left:0;
-  top:0;
-  width:100%;
-  height:110px;
-  background:linear-gradient(145deg, #7a0a23, #a31735);
-  clip-path:polygon(0 0, 100% 0, 50% 100%);
-  transform-origin:top;
-  transition:transform .8s ease;
-  z-index:2;
+.envelope{
+
+width:330px;
+
+height:220px;
+
+position:relative;
+
+cursor:pointer;
+
+transition:1s;
+
 }
 
-.wax-seal{
-  position:absolute;
-  left:50%;
-  top:98px;
-  transform:translateX(-50%);
-  width:74px;
-  height:74px;
-  border-radius:50%;
-  background:radial-gradient(circle at 30% 30%, #f9eaa6 0%, #e0c15c 22%, #b8860b 70%);
-  border:4px solid #e8c45a;
-  color:#5a0014;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:32px;
-  z-index:3;
-  box-shadow:0 0 18px rgba(255,215,0,.35);
+.body{
+
+position:absolute;
+
+bottom:0;
+
+width:100%;
+
+height:170px;
+
+background:#73001b;
+
+border:3px solid #d4af37;
+
+border-radius:12px;
+
 }
 
-.tap-text{
-  position:absolute;
-  left:50%;
-  bottom:-56px;
-  transform:translateX(-50%);
-  color:#f9e7b3;
-  font-size:24px;
-  letter-spacing:1px;
-  z-index:4;
-  text-shadow:0 2px 12px rgba(0,0,0,.45);
+.flap{
+
+position:absolute;
+
+top:0;
+
+width:100%;
+
+height:120px;
+
+background:#8b0022;
+
+clip-path:polygon(0 0,100% 0,50% 100%);
+
+transform-origin:top;
+
+transition:1s;
+
+z-index:4;
+
 }
 
-.hint{
-  margin-top:72px;
-  color:#e9c86d;
-  text-transform:uppercase;
-  letter-spacing:3px;
-  font-size:12px;
+.seal{
+
+position:absolute;
+
+left:50%;
+
+top:92px;
+
+transform:translateX(-50%);
+
+width:70px;
+
+height:70px;
+
+border-radius:50%;
+
+background:#d4af37;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:35px;
+
+color:#7a0018;
+
+box-shadow:0 0 30px gold;
+
+z-index:10;
+
 }
 
-.envelope-shell.opened{
-  transform:translateY(-18px) scale(.96);
-  opacity:.55;
+
+/* Letter */
+
+.letter{
+position:absolute;
+left:50%;
+top:35px;
+transform:translateX(-50%);
+width:88%;
+height:165px;
+background:#fffaf3;
+border-radius:8px;
+border:2px solid #d4af37;
+padding:20px;
+text-align:center;
+transition:1s;
+z-index:2;
 }
 
-.envelope-shell.opened .envelope-flap{
-  transform:rotateX(150deg) translateY(-8px);
+.miniBorder{
+position:absolute;
+top:10px;
+left:10px;
+right:10px;
+bottom:10px;
+border:1px solid #d4af37;
+pointer-events:none;
 }
 
-.invitation-page{
-  width:min(92vw, 760px);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  animation:fadeIn .7s ease;
+.letter h3{
+font-family:'Cinzel',serif;
+color:#7a0018;
+font-size:22px;
+margin-top:12px;
 }
 
-.card{
-  width:100%;
-  background:linear-gradient(180deg, #fffaf4, var(--card));
-  color:var(--text);
-  border:4px solid var(--gold);
-  border-radius:28px;
-  padding:28px 18px;
-  box-shadow:0 22px 60px rgba(0,0,0,.35);
-  position:relative;
-  overflow:hidden;
+.letter p{
+font-family:'Great Vibes',cursive;
+font-size:34px;
+color:#b8860b;
+margin-top:18px;
 }
 
-.card::before{
-  content:"";
-  position:absolute;
-  inset:12px;
-  border:1px solid rgba(123,0,24,.18);
-  border-radius:22px;
-  pointer-events:none;
+#envelopePage h2{
+margin-top:35px;
+font-family:'Cinzel',serif;
+font-size:28px;
+color:#d4af37;
+letter-spacing:2px;
 }
 
-.card-top{
-  color:#8b0000;
-  font-size:14px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  margin-bottom:10px;
-  text-align:center;
+#envelopePage p{
+margin-top:10px;
+font-size:16px;
+color:#fff;
 }
 
-.card h1{
-  color:#7b0018;
-  font-size:34px;
-  margin-bottom:8px;
-  text-align:center;
+/* Main Invitation */
+
+#mainInvitation{
+display:none;
+background:#2b000b;
+padding:60px 20px;
 }
 
-.subtitle{
-  font-size:15px;
-  line-height:1.6;
-  margin-bottom:18px;
-  color:#6d4a4a;
-  text-align:center;
+.hero{
+text-align:center;
+padding:70px 20px;
 }
 
-.names{
-  display:grid;
-  gap:12px;
-  margin:16px 0;
+.hero h4{
+font-size:38px;
+color:#d4af37;
+margin-bottom:25px;
 }
 
-.names div{
-  background:rgba(212,175,55,.09);
-  border:1px solid rgba(212,175,55,.35);
-  border-radius:18px;
-  padding:14px 12px;
+.hero h1{
+font-family:'Cinzel',serif;
+font-size:32px;
+color:#fff;
+margin-bottom:18px;
 }
 
-.names span{
-  display:block;
-  font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  color:#8b0000;
-  margin-bottom:6px;
+.hero p{
+font-size:18px;
+line-height:1.8;
+max-width:700px;
+margin:auto;
 }
 
-.names strong{
-  font-size:18px;
-  color:#3e1515;
+/* Couple Section */
+
+.coupleSection{
+padding:80px 20px;
+text-align:center;
 }
 
-.scratch-box{
-  position:relative;
-  height:82px;
-  margin:18px 0;
-  border-radius:20px;
-  overflow:hidden;
-  border:2px dashed var(--gold);
-  background:linear-gradient(135deg, #f9ecd6, #f3e1b8);
+.goldLine{
+width:120px;
+height:2px;
+background:#d4af37;
+margin:0 auto 30px;
 }
 
-.scratch-cover{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg, #b8860b, #e0c15c);
-  color:#4d2f00;
-  font-weight:700;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  transition:opacity .4s ease, transform .4s ease;
-  z-index:2;
+.coupleCard{
+max-width:650px;
+margin:auto;
+padding:40px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(212,175,55,.4);
+border-radius:20px;
+backdrop-filter:blur(8px);
 }
 
-.scratch-date{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:24px;
-  color:#7b0018;
-  font-weight:700;
-  z-index:1;
+.coupleCard h2{
+font-family:'Great Vibes',cursive;
+font-size:56px;
+color:#d4af37;
+font-weight:400;
+margin:15px 0;
 }
 
-.scratch-box.revealed .scratch-cover{
-  opacity:0;
-  transform:scale(1.03);
-  pointer-events:none;
+.relation{
+font-style:italic;
+color:#f6deb2;
+margin:10px 0;
 }
 
-.countdown-wrap{
-  margin:18px 0 14px;
-  padding:16px;
-  border-radius:18px;
-  background:#fff;
-  border:1px solid rgba(123,0,24,.14);
+.coupleCard h4{
+font-family:'Cinzel',serif;
+font-size:24px;
+color:#fff;
 }
 
-.countdown-label{
-  color:#8b0000;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-size:11px;
-  margin-bottom:8px;
-  text-align:center;
+.heartDivider{
+font-size:34px;
+color:#d4af37;
+margin:25px 0;
+animation:pulse 2s infinite;
 }
 
-.countdown{
-  font-size:30px;
-  color:#5e0018;
-  font-weight:700;
-  letter-spacing:2px;
-  text-align:center;
+
+/* Welcome */
+
+.welcomeSection{
+padding:80px 25px;
+text-align:center;
 }
 
-.details{
-  display:grid;
-  gap:8px;
-  text-align:left;
-  font-size:15px;
-  line-height:1.6;
-  color:#4b1a1a;
-  margin-top:12px;
+.welcomeSection h2{
+font-family:'Cinzel',serif;
+font-size:34px;
+color:#d4af37;
+margin-bottom:25px;
 }
 
-.details strong{
-  color:#7b0018;
+.welcomeSection p{
+font-size:18px;
+line-height:1.9;
+max-width:700px;
+margin:auto;
 }
 
-.map-btn{
-  display:block;
-  text-align:center;
-  margin-top:18px;
-  padding:14px 16px;
-  border-radius:999px;
-  background:linear-gradient(135deg, #7b0018, #a31d35);
-  color:#fff;
-  text-decoration:none;
-  font-weight:700;
-  box-shadow:0 10px 24px rgba(123,0,24,.3);
+/* Scratch */
+
+.scratchSection{
+padding:90px 20px;
+text-align:center;
 }
 
-.footer{
-  margin-top:14px;
-  color:#8b0000;
-  font-style:italic;
-  font-size:13px;
-  text-align:center;
+#scratchCard{
+width:320px;
+height:200px;
+margin:35px auto;
+position:relative;
+background:#fff;
+border-radius:16px;
+overflow:hidden;
+border:2px solid #d4af37;
 }
 
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(12px);}
-  to{opacity:1; transform:translateY(0);}
+#scratchCanvas{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
 }
 
-@keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-8px);}
+.dateReveal{
+position:absolute;
+inset:0;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:#7a0018;
 }
 
-@media (max-width:480px){
-  .envelope-shell{
-    width:280px;
-    height:196px;
-  }
+/* Event */
 
-  .tap-text{
-    font-size:22px;
-  }
-
-  .card h1{
-    font-size:28px;
-  }
-
-  .countdown{
-    font-size:24px;
-  }
-
-  .scratch-date{
-    font-size:20px;
-  }
+.eventCard{
+max-width:450px;
+margin:25px auto;
+padding:25px;
+background:rgba(255,255,255,.06);
+border:1px solid rgba(212,175,55,.4);
+border-radius:18px;
 }
+
+/* Map */
+
+.mapButton{
+display:inline-block;
+margin-top:25px;
+padding:14px 26px;
+background:#d4af37;
+color:#2b000b;
+text-decoration:none;
+border-radius:40px;
+font-weight:bold;
+}
+
+/* Countdown */
+
+#countdown{
+font-size:36px;
+font-weight:bold;
+color:#d4af37;
+margin-top:30px;
+}
+
+/* Family */
+
+.familySection{
+padding:80px 20px;
+text-align:center;
+}
+
+.familySection h2{
+font-family:'Cinzel',serif;
+margin-bottom:25px;
+color:#d4af37;
+}
+
+/* Music */
+
+#musicButton{
+position:fixed;
+right:20px;
+bottom:20px;
+width:60px;
+height:60px;
+border:none;
+border-radius:50%;
+background:#d4af37;
+font-size:24px;
+cursor:pointer;
+box-shadow:0 0 20px rgba(212,175,55,.6);
+}
+
+/* Animations */
+
+@keyframes glow{
+0%{opacity:.5;transform:scale(1);}
+50%{opacity:1;transform:scale(1.08);}
+100%{opacity:.5;transform:scale(1);}
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.15);}
+100%{transform:scale(1);}
+}
+
+@keyframes rotateGlow{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.coupleCard{
+padding:25px;
+}
+
+.coupleCard h2{
+font-size:42px;
+}
+
+.hero h1{
+font-size:26px;
+}
+
+.hero h4{
+font-size:28px;
+}
+
+#scratchCard{
+width:290px;
+height:180px;
+}
+
+}
+
