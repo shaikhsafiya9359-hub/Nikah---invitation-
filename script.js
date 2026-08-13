@@ -1,264 +1,447 @@
-// ================================
-// PREMIUM NIKAH INVITATION
-// SCRIPT.JS
-// ================================
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const envelopeScreen = document.getElementById("envelopeScreen");
     const envelope = document.querySelector(".envelope");
     const waxSeal = document.getElementById("waxSeal");
+
     const invitation = document.getElementById("invitation");
 
     const music = document.getElementById("bgMusic");
     const musicButton = document.getElementById("musicButton");
 
-    // =================================
-    // ENVELOPE OPEN
-    // =================================
 
-    waxSeal.addEventListener("click", () => {
+    /* =========================================
+       LOADING SCREEN
+    ========================================= */
 
-        waxSeal.style.pointerEvents = "none";
+    setTimeout(() => {
 
-        envelope.classList.add("open");
+        const loading = document.getElementById("loadingScreen");
 
-        // Small vibration on supported phones
-        if (navigator.vibrate) {
-            navigator.vibrate([40, 30, 70]);
-        }
+        if (loading) {
 
-        setTimeout(() => {
+            loading.style.transition =
+                "opacity 1s ease";
 
-            envelopeScreen.style.transition =
-                "opacity 1.2s ease, transform 1.2s ease";
+            loading.style.opacity = "0";
 
-            envelopeScreen.style.opacity = "0";
-            envelopeScreen.style.transform = "scale(1.04)";
-
-        }, 1100);
-
-        setTimeout(() => {
-
-            envelopeScreen.style.display = "none";
-
-            invitation.classList.remove("hidden");
-
-            musicButton.style.display = "block";
-
-            window.scrollTo({
-                top: 0,
-                behavior: "instant"
-            });
-
-            // Browser may block autoplay.
-            music.play().catch(() => {});
-
-        }, 2200);
-
-    });
-
-
-    // =================================
-    // MUSIC
-    // =================================
-
-    musicButton.addEventListener("click", () => {
-
-        if (music.paused) {
-
-            music.play();
-
-            musicButton.textContent = "♫";
-
-        } else {
-
-            music.pause();
-
-            musicButton.textContent = "♪";
+            setTimeout(() => {
+                loading.style.display = "none";
+            }, 1000);
 
         }
 
-    });
+    }, 2200);
 
 
-    // =================================
-    // REAL TOUCH SCRATCH
-    // =================================
+    /* =========================================
+       ENVELOPE OPEN
+    ========================================= */
 
-    const canvas = document.getElementById("scratchCanvas");
-    const scratchArea = document.getElementById("scratchArea");
-    const heartScratch = document.getElementById("heartScratch");
+    if (waxSeal) {
 
-    if (canvas && scratchArea) {
+        waxSeal.addEventListener("click", () => {
 
-        const ctx = canvas.getContext("2d");
+            if (navigator.vibrate) {
+                navigator.vibrate([40, 30, 70]);
+            }
 
-        let scratching = false;
-        let revealed = false;
-        let scratchedPixels = 0;
+            waxSeal.style.pointerEvents = "none";
 
-        function resizeCanvas() {
+            envelope.classList.add("open");
 
-            const rect = scratchArea.getBoundingClientRect();
 
-            const dpr = window.devicePixelRatio || 1;
+            /* Start music after user interaction */
 
-            canvas.width = rect.width * dpr;
-            canvas.height = rect.height * dpr;
+            if (music) {
 
-            canvas.style.width = rect.width + "px";
-            canvas.style.height = rect.height + "px";
+                music.volume = 0.22;
 
-            ctx.scale(dpr, dpr);
-
-            createScratchLayer();
-
-        }
-
-        function createScratchLayer() {
-
-            const width = scratchArea.clientWidth;
-            const height = scratchArea.clientHeight;
-
-            const gradient = ctx.createLinearGradient(
-                0,
-                0,
-                width,
-                height
-            );
-
-            gradient.addColorStop(0, "#e6c98c");
-            gradient.addColorStop(.45, "#c49b58");
-            gradient.addColorStop(1, "#ead49e");
-
-            ctx.globalCompositeOperation = "source-over";
-
-            ctx.fillStyle = gradient;
-
-            ctx.fillRect(0, 0, width, height);
-
-            // Glitter dots
-            for (let i = 0; i < 260; i++) {
-
-                const x = Math.random() * width;
-                const y = Math.random() * height;
-
-                ctx.beginPath();
-
-                ctx.arc(
-                    x,
-                    y,
-                    Math.random() * 1.5 + .4,
-                    0,
-                    Math.PI * 2
-                );
-
-                ctx.fillStyle =
-                    "rgba(255,255,255," +
-                    (Math.random() * .55 + .2) +
-                    ")";
-
-                ctx.fill();
+                music.play().catch(() => {});
 
             }
 
-            ctx.globalCompositeOperation = "destination-out";
-        }
+            if (musicButton) {
+                musicButton.style.display = "flex";
+            }
 
 
-        function getPosition(event) {
+            /* Open envelope */
 
-            const rect = canvas.getBoundingClientRect();
+            setTimeout(() => {
 
-            let clientX;
-            let clientY;
+                envelopeScreen.style.transition =
+                    "opacity 1.2s ease, transform 1.2s ease";
 
-            if (event.touches && event.touches.length) {
+                envelopeScreen.style.opacity = "0";
 
-                clientX = event.touches[0].clientX;
-                clientY = event.touches[0].clientY;
+                envelopeScreen.style.transform =
+                    "scale(1.05)";
+
+            }, 1000);
+
+
+            /* Show invitation */
+
+            setTimeout(() => {
+
+                envelopeScreen.style.display =
+                    "none";
+
+                invitation.classList.remove(
+                    "hidden"
+                );
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "instant"
+                });
+
+            }, 2100);
+
+        });
+
+    }
+
+
+    /* =========================================
+       MUSIC BUTTON
+    ========================================= */
+
+    if (musicButton) {
+
+        musicButton.addEventListener("click", () => {
+
+            if (!music) return;
+
+            if (music.paused) {
+
+                music.play();
+
+                musicButton.textContent = "♫";
 
             } else {
 
-                clientX = event.clientX;
-                clientY = event.clientY;
+                music.pause();
+
+                musicButton.textContent = "♪";
 
             }
 
-            return {
-                x: clientX - rect.left,
-                y: clientY - rect.top
-            };
+        });
 
-        }
+    }
 
 
-        function scratch(event) {
+    /* =========================================
+       HEART SCRATCH
+    ========================================= */
 
-            if (!scratching || revealed) return;
+    const canvas =
+        document.getElementById("scratchCanvas");
 
-            event.preventDefault();
+    const scratchArea =
+        document.getElementById("scratchArea");
 
-            const pos = getPosition(event);
+    const heart =
+        document.getElementById("heartScratch");
 
-            ctx.beginPath();
 
-            ctx.arc(
-                pos.x,
-                pos.y,
-                24,
+    if (canvas && scratchArea) {
+
+        const ctx =
+            canvas.getContext("2d");
+
+
+        let scratching = false;
+
+        let revealed = false;
+
+        let scratchCount = 0;
+
+
+        /* -------------------------------------
+           CANVAS SIZE
+        ------------------------------------- */
+
+        function setupCanvas() {
+
+            const width =
+                scratchArea.clientWidth;
+
+            const height =
+                scratchArea.clientHeight;
+
+            const ratio =
+                window.devicePixelRatio || 1;
+
+
+            canvas.width =
+                width * ratio;
+
+            canvas.height =
+                height * ratio;
+
+
+            canvas.style.width =
+                width + "px";
+
+            canvas.style.height =
+                height + "px";
+
+
+            ctx.setTransform(
+                ratio,
                 0,
-                Math.PI * 2
+                0,
+                ratio,
+                0,
+                0
             );
 
-            ctx.fill();
 
-            checkScratchProgress();
+            createGoldLayer();
 
         }
 
 
-        function checkScratchProgress() {
+        /* -------------------------------------
+           GOLD SCRATCH LAYER
+        ------------------------------------- */
 
-            scratchedPixels++;
+        function createGoldLayer() {
 
-            // Every few strokes check the canvas
-            if (scratchedPixels % 15 !== 0) return;
+            const width =
+                scratchArea.clientWidth;
 
-            const width = canvas.width;
-            const height = canvas.height;
+            const height =
+                scratchArea.clientHeight;
 
-            const imageData =
-                ctx.getImageData(
+
+            ctx.globalCompositeOperation =
+                "source-over";
+
+
+            const gradient =
+                ctx.createLinearGradient(
                     0,
                     0,
                     width,
                     height
                 );
 
-            let transparent = 0;
 
-            // Sample pixels for performance
+            gradient.addColorStop(
+                0,
+                "#f1d58d"
+            );
+
+            gradient.addColorStop(
+                0.45,
+                "#bd9146"
+            );
+
+            gradient.addColorStop(
+                1,
+                "#e5c77d"
+            );
+
+
+            ctx.fillStyle =
+                gradient;
+
+            ctx.fillRect(
+                0,
+                0,
+                width,
+                height
+            );
+
+
+            /* Glitter */
+
             for (
-                let i = 3;
-                i < imageData.data.length;
-                i += 40
+                let i = 0;
+                i < 350;
+                i++
             ) {
 
-                if (imageData.data[i] < 80) {
+                const x =
+                    Math.random() * width;
+
+                const y =
+                    Math.random() * height;
+
+
+                ctx.beginPath();
+
+                ctx.arc(
+                    x,
+                    y,
+                    Math.random() * 1.6 + .4,
+                    0,
+                    Math.PI * 2
+                );
+
+
+                ctx.fillStyle =
+                    "rgba(255,255,255,.65)";
+
+                ctx.fill();
+
+            }
+
+
+            ctx.globalCompositeOperation =
+                "destination-out";
+
+        }
+
+
+        /* -------------------------------------
+           TOUCH POSITION
+        ------------------------------------- */
+
+        function getPosition(event) {
+
+            const rect =
+                canvas.getBoundingClientRect();
+
+
+            let x;
+            let y;
+
+
+            if (
+                event.touches &&
+                event.touches.length
+            ) {
+
+                x =
+                    event.touches[0].clientX -
+                    rect.left;
+
+                y =
+                    event.touches[0].clientY -
+                    rect.top;
+
+            } else {
+
+                x =
+                    event.clientX -
+                    rect.left;
+
+                y =
+                    event.clientY -
+                    rect.top;
+
+            }
+
+
+            return {
+                x,
+                y
+            };
+
+        }
+
+
+        /* -------------------------------------
+           SCRATCH
+        ------------------------------------- */
+
+        function scratch(event) {
+
+            if (
+                !scratching ||
+                revealed
+            ) {
+                return;
+            }
+
+
+            event.preventDefault();
+
+
+            const position =
+                getPosition(event);
+
+
+            ctx.beginPath();
+
+            ctx.arc(
+                position.x,
+                position.y,
+                27,
+                0,
+                Math.PI * 2
+            );
+
+            ctx.fill();
+
+
+            scratchCount++;
+
+
+            if (
+                scratchCount % 12 === 0
+            ) {
+
+                checkReveal();
+
+            }
+
+        }
+
+
+        /* -------------------------------------
+           CHECK HOW MUCH IS SCRATCHED
+        ------------------------------------- */
+
+        function checkReveal() {
+
+            const image =
+                ctx.getImageData(
+                    0,
+                    0,
+                    canvas.width,
+                    canvas.height
+                );
+
+
+            let transparent = 0;
+
+            const step = 80;
+
+
+            for (
+                let i = 3;
+                i < image.data.length;
+                i += step
+            ) {
+
+                if (
+                    image.data[i] < 80
+                ) {
+
                     transparent++;
+
                 }
 
             }
 
+
             const total =
-                imageData.data.length / 40;
+                image.data.length / step;
+
 
             const percentage =
-                (transparent / total) * 100;
+                transparent / total * 100;
 
-            if (percentage > 48) {
+
+            if (
+                percentage >= 42
+            ) {
 
                 revealDate();
 
@@ -267,69 +450,110 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
+        /* -------------------------------------
+           REVEAL DATE
+        ------------------------------------- */
+
         function revealDate() {
 
             if (revealed) return;
 
             revealed = true;
 
+
             canvas.style.transition =
-                "opacity .8s ease";
+                "opacity .9s ease";
 
             canvas.style.opacity = "0";
 
-            heartScratch.style.transition =
-                "opacity .5s ease";
 
-            heartScratch.style.opacity = "0";
+            if (heart) {
 
-            launchFireworks();
+                heart.style.transition =
+                    "opacity .6s ease";
+
+                heart.style.opacity = "0";
+
+            }
+
+
+            fireworks();
+
 
             setTimeout(() => {
 
-                heartScratch.style.display = "none";
+                canvas.style.display =
+                    "none";
 
-            }, 800);
+                if (heart) {
+                    heart.style.display =
+                        "none";
+                }
+
+            }, 900);
 
         }
 
 
-        // Mouse
-        canvas.addEventListener("mousedown", (e) => {
+        /* -------------------------------------
+           MOUSE
+        ------------------------------------- */
 
-            scratching = true;
-
-            scratch(e);
-
-        });
-
-        window.addEventListener("mouseup", () => {
-
-            scratching = false;
-
-        });
-
-        canvas.addEventListener("mousemove", scratch);
-
-
-        // Touch
         canvas.addEventListener(
-            "touchstart",
-            (e) => {
+            "mousedown",
+            event => {
 
                 scratching = true;
 
-                scratch(e);
+                scratch(event);
+
+            }
+        );
+
+
+        canvas.addEventListener(
+            "mousemove",
+            scratch
+        );
+
+
+        window.addEventListener(
+            "mouseup",
+            () => {
+
+                scratching = false;
+
+            }
+        );
+
+
+        /* -------------------------------------
+           PHONE TOUCH
+        ------------------------------------- */
+
+        canvas.addEventListener(
+            "touchstart",
+            event => {
+
+                scratching = true;
+
+                scratch(event);
 
             },
-            { passive: false }
+            {
+                passive: false
+            }
         );
+
 
         canvas.addEventListener(
             "touchmove",
             scratch,
-            { passive: false }
+            {
+                passive: false
+            }
         );
+
 
         canvas.addEventListener(
             "touchend",
@@ -337,99 +561,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 scratching = false;
 
-            },
-            { passive: true }
+            }
         );
 
 
-        resizeCanvas();
+        setupCanvas();
+
 
         window.addEventListener(
             "resize",
-            resizeCanvas
+            setupCanvas
         );
 
     }
 
 
-    // =================================
-    // FIREWORKS
-    // =================================
+    /* =========================================
+       FIREWORKS
+    ========================================= */
 
-    function launchFireworks() {
+    function fireworks() {
 
         const container =
-            document.getElementById("fireworks");
+            document.getElementById(
+                "fireworks"
+            );
+
 
         if (!container) return;
 
-        for (let burst = 0; burst < 5; burst++) {
+
+        for (
+            let burst = 0;
+            burst < 6;
+            burst++
+        ) {
 
             setTimeout(() => {
 
-                const centerX =
-                    15 + Math.random() * 70;
-
-                const centerY =
-                    15 + Math.random() * 55;
-
-                for (let i = 0; i < 35; i++) {
-
-                    const spark =
-                        document.createElement("span");
-
-                    spark.style.position = "absolute";
-
-                    spark.style.left =
-                        centerX + "%";
-
-                    spark.style.top =
-                        centerY + "%";
-
-                    spark.style.width = "5px";
-
-                    spark.style.height = "5px";
-
-                    spark.style.borderRadius = "50%";
-
-                    spark.style.background =
-                        i % 2 === 0
-                        ? "#ead39b"
-                        : "#ffffff";
-
-                    spark.style.boxShadow =
-                        "0 0 10px #ead39b";
-
-                    spark.style.transition =
-                        "transform 1.2s ease-out, opacity 1.2s ease-out";
-
-                    container.appendChild(spark);
-
-                    const angle =
-                        (Math.PI * 2 * i) / 35;
-
-                    const distance =
-                        60 + Math.random() * 90;
-
-                    requestAnimationFrame(() => {
-
-                        spark.style.transform =
-                            `translate(
-                                ${Math.cos(angle) * distance}px,
-                                ${Math.sin(angle) * distance}px
-                            )`;
-
-                        spark.style.opacity = "0";
-
-                    });
-
-                    setTimeout(() => {
-
-                        spark.remove();
-
-                    }, 1300);
-
-                }
+                createBurst(container);
 
             }, burst * 350);
 
@@ -438,84 +608,197 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // =================================
-    // COUNTDOWN
-    // =================================
+    function createBurst(container) {
 
-    const targetDate =
-        new Date(
-            "2026-11-09T19:00:00"
-        ).getTime();
+        const centerX =
+            20 + Math.random() * 60;
 
-    function updateCountdown() {
+        const centerY =
+            20 + Math.random() * 45;
 
-        const now = Date.now();
 
-        let difference =
-            targetDate - now;
+        for (
+            let i = 0;
+            i < 40;
+            i++
+        ) {
 
-        if (difference < 0) {
+            const particle =
+                document.createElement("span");
 
-            difference = 0;
+
+            particle.className =
+                "firework-particle";
+
+
+            particle.style.left =
+                centerX + "%";
+
+            particle.style.top =
+                centerY + "%";
+
+
+            const angle =
+                Math.PI * 2 * i / 40;
+
+
+            const distance =
+                55 + Math.random() * 110;
+
+
+            particle.style.setProperty(
+                "--x",
+                Math.cos(angle) *
+                distance +
+                "px"
+            );
+
+
+            particle.style.setProperty(
+                "--y",
+                Math.sin(angle) *
+                distance +
+                "px"
+            );
+
+
+            container.appendChild(
+                particle
+            );
+
+
+            setTimeout(() => {
+
+                particle.remove();
+
+            }, 1300);
 
         }
 
+    }
+
+
+    /* =========================================
+       COUNTDOWN
+    ========================================= */
+
+    /*
+       IMPORTANT:
+       Nikah:
+       09 November 2026
+       7:00 PM
+    */
+
+
+    const targetDate =
+        new Date(
+            "2026-11-09T19:00:00+05:30"
+        ).getTime();
+
+
+    function updateCountdown() {
+
+        const now =
+            Date.now();
+
+
+        let remaining =
+            targetDate - now;
+
+
+        if (remaining < 0) {
+            remaining = 0;
+        }
+
+
         const days =
             Math.floor(
-                difference /
+                remaining /
                 (1000 * 60 * 60 * 24)
             );
 
+
         const hours =
             Math.floor(
-                (difference /
-                (1000 * 60 * 60)) % 24
-            );
+                remaining /
+                (1000 * 60 * 60)
+            ) % 24;
+
 
         const minutes =
             Math.floor(
-                (difference /
-                (1000 * 60)) % 60
-            );
+                remaining /
+                (1000 * 60)
+            ) % 60;
+
 
         const seconds =
             Math.floor(
-                (difference /
-                1000) % 60
+                remaining / 1000
+            ) % 60;
+
+
+        const daysElement =
+            document.getElementById(
+                "days"
             );
 
-        const daysEl =
-            document.getElementById("days");
+        const hoursElement =
+            document.getElementById(
+                "hours"
+            );
 
-        const hoursEl =
-            document.getElementById("hours");
+        const minutesElement =
+            document.getElementById(
+                "minutes"
+            );
 
-        const minutesEl =
-            document.getElementById("minutes");
+        const secondsElement =
+            document.getElementById(
+                "seconds"
+            );
 
-        const secondsEl =
-            document.getElementById("seconds");
+
+        if (daysElement) {
+
+            daysElement.textContent =
+                String(days)
+                .padStart(2, "0");
+
+        }
 
 
-        if (daysEl)
-            daysEl.textContent =
-                String(days).padStart(2, "0");
+        if (hoursElement) {
 
-        if (hoursEl)
-            hoursEl.textContent =
-                String(hours).padStart(2, "0");
+            hoursElement.textContent =
+                String(hours)
+                .padStart(2, "0");
 
-        if (minutesEl)
-            minutesEl.textContent =
-                String(minutes).padStart(2, "0");
+        }
 
-        if (secondsEl)
-            secondsEl.textContent =
-                String(seconds).padStart(2, "0");
+
+        if (minutesElement) {
+
+            minutesElement.textContent =
+                String(minutes)
+                .padStart(2, "0");
+
+        }
+
+
+        if (secondsElement) {
+
+            secondsElement.textContent =
+                String(seconds)
+                .padStart(2, "0");
+
+        }
 
     }
 
+
     updateCountdown();
+
 
     setInterval(
         updateCountdown,
@@ -523,41 +806,113 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    // =================================
-    // SCROLL REVEAL
-    // =================================
+    /* =========================================
+       SCREEN ANIMATION
+    ========================================= */
 
-    const sections =
-        document.querySelectorAll(".screen");
+    const screens =
+        document.querySelectorAll(
+            "#invitation .screen"
+        );
 
-    const observer =
-        new IntersectionObserver(
-            (entries) => {
 
-                entries.forEach((entry) => {
+    if (
+        "IntersectionObserver"
+        in window
+    ) {
 
-                    if (
-                        entry.isIntersecting
-                    ) {
+        const observer =
+            new IntersectionObserver(
+                entries => {
 
-                        entry.target.classList.add(
-                            "visible"
-                        );
+                    entries.forEach(
+                        entry => {
 
-                    }
+                            if (
+                                entry.isIntersecting
+                            ) {
 
-                });
+                                entry.target.classList.add(
+                                    "visible"
+                                );
 
-            },
-            {
-                threshold: .18
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: .15
+                }
+            );
+
+
+        screens.forEach(
+            screen => {
+
+                observer.observe(
+                    screen
+                );
+
             }
         );
 
-    sections.forEach((section) => {
+    }
 
-        observer.observe(section);
 
-    });
+    /* =========================================
+       SWIPE / SNAP FEEL
+    ========================================= */
+
+    let touchStartY = 0;
+
+    let touchEndY = 0;
+
+
+    document.addEventListener(
+        "touchstart",
+        event => {
+
+            touchStartY =
+                event.changedTouches[0]
+                    .screenY;
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    document.addEventListener(
+        "touchend",
+        event => {
+
+            touchEndY =
+                event.changedTouches[0]
+                    .screenY;
+
+            const distance =
+                touchStartY -
+                touchEndY;
+
+
+            /*
+              Don't interfere with
+              scratch canvas.
+            */
+
+            if (
+                Math.abs(distance) < 80
+            ) {
+                return;
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
 
 });
