@@ -2,422 +2,767 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Safiya & Umar — Nikah Invitation</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Safiya ❤️ Umar | Nikah Invitation</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+      href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&display=swap"
+      rel="stylesheet">
+
 </head>
 
 <body>
 
-<!-- ================= ENVELOPE ================= -->
+<!-- =========================================
+     SOFT BACKGROUND MUSIC
+========================================= -->
 
-<section id="envelopeScreen">
+<audio id="bgMusic"
+       loop
+       preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
 
-    <div class="envelopeGlow"></div>
+<button id="musicButton"
+        class="music-button"
+        aria-label="Music">
+    ♪
+</button>
 
-    <div class="envelope">
 
-        <div class="envelopeBack"></div>
+<!-- =========================================
+     1. LOADING SCREEN
+========================================= -->
 
-        <div class="envelopeFlap"></div>
+<section class="screen loading-screen"
+         id="loadingScreen">
 
-        <div class="envelopeFront">
+    <div class="corner-decoration"></div>
 
-            <div class="floralCorner floralLeft">✦ ❧</div>
-            <div class="floralCorner floralRight">❧ ✦</div>
+    <div class="bismillah">
+        بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+    </div>
 
-            <div class="envelopeText">
-                <span>THE NIKAH OF</span>
-                <strong>Safiya & Umar</strong>
+    <p class="arabic-sub">
+        In the Name of Allah,<br>
+        the Most Gracious, the Most Merciful
+    </p>
+
+    <div class="loading-line"></div>
+
+    <p class="loading-text">
+        LOADING...
+    </p>
+
+</section>
+
+
+<!-- =========================================
+     2. ENVELOPE SCREEN
+========================================= -->
+
+<section class="screen envelope-screen"
+         id="envelopeScreen">
+
+    <div class="envelope-wrapper">
+
+        <div class="envelope">
+
+            <div class="envelope-back"></div>
+
+            <div class="envelope-paper">
+
+                <p class="mini-title">
+                    YOU ARE CORDIALLY
+                </p>
+
+                <h1>
+                    INVITED
+                </h1>
+
+                <div class="ornament">
+                    ❦
+                </div>
+
             </div>
+
+            <div class="envelope-flap"></div>
+
+            <!-- BEAUTIFUL WAX SEAL -->
+
+            <button class="wax-seal"
+                    id="waxSeal"
+                    aria-label="Open Invitation">
+
+                <span class="seal-inner">
+                    ✦
+                </span>
+
+            </button>
 
         </div>
 
-        <!-- Wax Seal -->
-        <button id="waxSeal" aria-label="Open invitation">
+        <p class="tap-title">
+            TAP THE SEAL
+        </p>
 
-            <span class="sealOuter"></span>
+        <p class="tap-subtitle">
+            TO OPEN INVITATION
+        </p>
 
-            <span class="sealInner">
-                S
-                <small>♥</small>
-                U
-            </span>
+        <div class="tap-hand">
+            ♡
+        </div>
 
-        </button>
-
-    </div>
-
-    <div class="tapText">
-        <span class="tapIcon">⌄</span>
-        Tap the seal to open
     </div>
 
 </section>
 
 
-<!-- ================= INVITATION ================= -->
+<!-- =========================================
+     MAIN INVITATION
+========================================= -->
 
-<main id="invitation" class="hidden">
+<main id="invitation"
+      class="hidden">
 
-    <!-- Welcome -->
 
-    <section class="screen welcome">
+<!-- =========================================
+     3. OPENING NIKAH SCREEN
+========================================= -->
 
-        <div class="ornament">❧ ✦ ❧</div>
+<section class="screen invitation-screen">
 
-        <p class="arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+    <div class="floral-top"></div>
 
-        <p class="smallCaps">IN THE NAME OF ALLAH</p>
+    <p class="arabic-small">
+        بِسْمِ اللَّهِ
+    </p>
 
-        <h1>
-            With the blessings<br>
-            of Allah SWT
+    <p class="with-blessings">
+        WITH THE BLESSINGS<br>
+        OF ALLAH
+    </p>
+
+    <div class="gold-line">
+        ♥
+    </div>
+
+    <h1 class="nikah-heading">
+        Nikah
+    </h1>
+
+    <p class="nikah-small">
+        In the Name of Allah
+    </p>
+
+</section>
+
+
+<!-- =========================================
+     4. NIKAH INVITATION
+========================================= -->
+
+<section class="screen cream-screen">
+
+    <p class="script-heading">
+        In the Name of Allah
+    </p>
+
+    <div class="tiny-heart">
+        ♥
+    </div>
+
+    <p class="formal-text">
+        WE REQUEST THE HONOUR OF<br>
+        YOUR PRESENCE ON THE<br>
+        AUSPICIOUS OCCASION OF
+    </p>
+
+    <h1 class="large-script">
+        Nikah
+    </h1>
+
+    <div class="ornamental-divider">
+        ❧ ♥ ❧
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     5. COUPLE + PARENTS
+========================================= -->
+
+<section class="screen couple-screen">
+
+    <div class="floral-frame">
+
+        <p class="small-label">
+            BRIDE
+        </p>
+
+        <h1 class="couple-name">
+            Safiya Sheikh
         </h1>
 
-        <div class="goldLine"></div>
-
-        <p class="intro">
-            We joyfully invite you to share<br>
-            in the blessed occasion of our Nikah.
+        <p class="relation">
+            Daughter of
         </p>
 
-        <div class="scrollHint">SCROLL TO DISCOVER</div>
-
-    </section>
-
-
-    <!-- Couple -->
-
-    <section class="screen couple">
-
-        <div class="ornament">✦ ❧ ✦</div>
-
-        <p class="smallCaps">TOGETHER WITH THEIR FAMILIES</p>
-
-        <h2>Safiya Shaikh</h2>
-
-        <p class="relation">Daughter of</p>
-
-        <p class="parent">
+        <h2 class="parent-name">
             Haji Mohd. Zahid Shaikh
-        </p>
-
-        <div class="heartDivider">♥</div>
-
-        <h2>Hafiz Mohd. Umar Shaikh</h2>
-
-        <p class="relation">Son of</p>
-
-        <p class="parent">
-            Haji Naeem Ahmad Shaikh
-        </p>
-
-    </section>
-
-
-    <!-- Invitation Message -->
-
-    <section class="screen message">
-
-        <div class="ornament">❧ ✦ ❧</div>
-
-        <p class="smallCaps">A BEAUTIFUL BEGINNING</p>
-
-        <h2>
-            Two hearts,<br>
-            one beautiful journey.
         </h2>
 
-        <p>
-            With love in our hearts and prayers
-            on our lips, we begin a new chapter
-            together.
-        </p>
-
-        <div class="flower">✿</div>
-
-        <p>
-            Your presence and blessings<br>
-            mean the world to us.
-        </p>
-
-    </section>
-
-
-    <!-- Scratch Date -->
-
-    <section class="screen scratchSection">
-
-        <div class="ornament">✦ ❧ ✦</div>
-
-        <p class="smallCaps">A LITTLE SURPRISE</p>
-
-        <h2>Scratch the Heart</h2>
-
-        <p class="hint">
-            Reveal our special date
-        </p>
-
-        <div id="scratchArea">
-
-            <div class="dateUnder">
-
-                <span>OUR NIKAH</span>
-
-                <strong>09</strong>
-
-                <em>NOVEMBER 2026</em>
-
-                <small>MONDAY • 7:00 PM</small>
-
-            </div>
-
-            <div id="heartScratch">
-
-                <div class="glitterHeart">♥</div>
-
-                <span>SCRATCH</span>
-                <span>TO REVEAL</span>
-
-            </div>
-
-            <canvas id="scratchCanvas"></canvas>
-
+        <div class="heart-divider">
+            ♥
         </div>
 
-    </section>
+        <p class="small-label">
+            GROOM
+        </p>
+
+        <h1 class="couple-name">
+            Hafiz Mohd. Umar Shaikh
+        </h1>
+
+        <p class="relation">
+            Son of
+        </p>
+
+        <h2 class="parent-name">
+            Haji Naeem Ahmad Shaikh
+        </h2>
+
+    </div>
+
+</section>
 
 
-    <!-- Fireworks -->
+<!-- =========================================
+     6. INVITATION MESSAGE
+========================================= -->
 
-    <section id="fireworksSection" class="screen revealDate">
+<section class="screen cream-screen">
 
-        <div id="fireworks"></div>
+    <div class="message-frame">
 
-        <div class="ornament">✦ ❧ ✦</div>
-
-        <p class="smallCaps">THE DATE IS REVEALED</p>
-
-        <h2>09 November 2026</h2>
-
-        <p>Monday • 7:00 PM</p>
-
-        <div class="sparkle">✦</div>
-
-    </section>
-
-
-    <!-- Nikah Details -->
-
-    <section class="screen details">
-
-        <div class="ornament">❧ ✦ ❧</div>
-
-        <p class="smallCaps">THE CELEBRATION</p>
-
-        <h2>Nikah Ceremony</h2>
-
-        <div class="detailCards">
-
-            <div class="detailBox">
-                <span>DATE</span>
-                <strong>09</strong>
-                <p>November 2026</p>
-            </div>
-
-            <div class="detailBox">
-                <span>TIME</span>
-                <strong>07</strong>
-                <p>O'Clock in the Evening</p>
-            </div>
-
+        <div class="ornament-top">
+            ❧
         </div>
 
-        <div class="dinnerCard">
+        <p class="family-intro">
+            TOGETHER WITH THEIR FAMILIES
+        </p>
 
-            <div class="flower">✿</div>
+        <h1 class="invite-script">
+            We invite you
+        </h1>
 
-            <span>AFTER NIKAH</span>
+        <p class="message-text">
+            to share in our joy and<br>
+            be a part of this beautiful<br>
+            beginning of our forever.
+        </p>
 
-            <h3>Dinner</h3>
+        <div class="heart-divider">
+            ♥
+        </div>
+
+        <p class="urdu-line">
+            Duaon ki darkhwast
+        </p>
+
+        <div class="floral-bottom"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     7. SCRATCH HEART
+========================================= -->
+
+<section class="screen scratch-screen">
+
+    <p class="special-title">
+        Special Surprise
+    </p>
+
+    <div class="gold-line">
+        ♥
+    </div>
+
+    <p class="scratch-instruction">
+        Scratch the Heart<br>
+        to Reveal the Date
+    </p>
+
+    <div class="scratch-wrapper"
+         id="scratchArea">
+
+        <!-- DATE UNDER HEART -->
+
+        <div class="date-under-heart">
+
+            <p class="date-day">
+                Monday
+            </p>
+
+            <h1>
+                09 November
+            </h1>
+
+            <h2>
+                2026
+            </h2>
 
             <p>
-                Join us for dinner and celebration
-                after the Nikah ceremony.
+                7:00 PM
             </p>
 
         </div>
 
-    </section>
+        <!-- HEART -->
 
+        <div class="heart-shape"
+             id="heartScratch">
 
-    <!-- Venue -->
+            <span>
+                ♥
+            </span>
 
-    <section class="screen venue">
-
-        <div class="ornament">✦ ❧ ✦</div>
-
-        <p class="smallCaps">WHERE WE CELEBRATE</p>
-
-        <h2>Venue</h2>
-
-        <div class="venueCard">
-
-            <div class="venueIcon">⌖</div>
-
-            <h3>Galaxy Marriage Ground</h3>
-
-            <div class="goldLine"></div>
-
-            <p>
-                Opp. Baitus Salam Masjid<br>
-                Naigaon Road<br>
-                Bhiwandi, Thane
-            </p>
-
-            <a
-                href="https://www.google.com/maps/search/?api=1&query=Galaxy+Marriage+Ground+Bhiwandi"
-                target="_blank"
-                class="mapButton">
-                OPEN MAP
-            </a>
+            <div class="glitter"></div>
 
         </div>
 
-    </section>
+        <!-- SCRATCH CANVAS -->
+
+        <canvas id="scratchCanvas"></canvas>
+
+    </div>
+
+    <p class="finger-text">
+        Use your finger to scratch
+    </p>
+
+    <div id="fireworks"></div>
+
+</section>
 
 
-    <!-- Countdown -->
+<!-- =========================================
+     8. DATE REVEAL
+========================================= -->
 
-    <section class="screen countdownSection">
+<section class="screen date-screen">
 
-        <div class="ornament">❧ ✦ ❧</div>
+    <p class="save-title">
+        ALHAMDULILLAH!
+    </p>
 
-        <p class="smallCaps">COUNTING DOWN TO FOREVER</p>
+    <p class="save-subtitle">
+        SAVE THE DATE
+    </p>
 
-        <h2>Until Our Nikah</h2>
+    <div class="date-card">
 
-        <div id="countdown">
-
-            <div class="timeBox">
-                <strong id="days">00</strong>
-                <span>DAYS</span>
-            </div>
-
-            <div class="timeBox">
-                <strong id="hours">00</strong>
-                <span>HOURS</span>
-            </div>
-
-            <div class="timeBox">
-                <strong id="minutes">00</strong>
-                <span>MINUTES</span>
-            </div>
-
-            <div class="timeBox">
-                <strong id="seconds">00</strong>
-                <span>SECONDS</span>
-            </div>
-
-        </div>
-
-        <div class="heartDivider">♥</div>
-
-    </section>
-
-
-    <!-- Blessings -->
-
-    <section class="screen blessings">
-
-        <div class="ornament">✦ ❧ ✦</div>
-
-        <p class="smallCaps">A REQUEST FROM OUR HEARTS</p>
-
-        <h2>No Gifts Please</h2>
-
-        <div class="flower">✿</div>
-
-        <p class="blessingText">
-            Your presence and blessings<br>
-            are the greatest gift we could receive.
+        <p class="date-week">
+            MONDAY
         </p>
 
-        <p class="arabicSmall">
-            دعاؤں میں یاد رکھیں
+        <h1>
+            09
+        </h1>
+
+        <h2>
+            NOVEMBER
+        </h2>
+
+        <h3>
+            2026
+        </h3>
+
+        <div class="date-divider"></div>
+
+        <p class="time">
+            7:00 PM
         </p>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- Family -->
+<!-- =========================================
+     9. NIKAH CEREMONY
+========================================= -->
 
-    <section class="screen family">
+<section class="screen ceremony-screen">
 
-        <div class="ornament">❧ ✦ ❧</div>
+    <h1 class="section-script">
+        Nikah Ceremony
+    </h1>
 
-        <p class="smallCaps">WITH LOVE FROM OUR FAMILIES</p>
+    <div class="info-card">
 
-        <h2>Awaiting To Welcome You</h2>
+        <div class="info-row">
 
-        <div class="familyNames">
+            <div class="info-icon">
+                ♧
+            </div>
 
-            <!-- FAMILY NAMES YAHAN BAAD MEIN ADD KARENGE -->
-
-            <p>Family Members</p>
-
-            <p>Relatives & Friends</p>
+            <div>
+                <small>DATE</small>
+                <p>
+                    Monday<br>
+                    09 November 2026
+                </p>
+            </div>
 
         </div>
 
-        <div class="flower">✿</div>
 
-    </section>
+        <div class="info-row">
 
+            <div class="info-icon">
+                ◷
+            </div>
 
-    <!-- Final -->
+            <div>
+                <small>TIME</small>
+                <p>
+                    7:00 PM
+                </p>
+            </div>
 
-    <section class="screen final">
-
-        <div class="ornament">✦ ❧ ✦</div>
-
-        <p class="arabic">الحمد لله</p>
-
-        <h2>JazakAllah Khair</h2>
-
-        <p>
-            We look forward to celebrating<br>
-            this blessed beginning with you.
-        </p>
-
-        <div class="finalNames">
-            Safiya ♥ Umar
         </div>
 
-        <div class="sparkles">✦ ✧ ✦</div>
 
-    </section>
+        <div class="info-row">
+
+            <div class="info-icon">
+                ♨
+            </div>
+
+            <div>
+                <small>DINNER</small>
+                <p>
+                    Dinner will be served<br>
+                    after the Nikah
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     10. VENUE
+========================================= -->
+
+<section class="screen venue-screen">
+
+    <h1 class="section-script">
+        Venue
+    </h1>
+
+    <div class="venue-divider">
+        ❧ ♥ ❧
+    </div>
+
+    <h2>
+        GALAXY MARRIAGE GROUND
+    </h2>
+
+    <p>
+        Opp. Baitus Salam Masjid,<br>
+        Naigaon Road,<br>
+        Bhiwandi
+    </p>
+
+    <div class="venue-photo">
+        <div class="venue-photo-overlay">
+            GALAXY MARRIAGE GROUND
+        </div>
+    </div>
+
+    <a class="map-button"
+       href="https://www.google.com/maps/search/?api=1&query=Galaxy+Marriage+Ground+Bhiwandi"
+       target="_blank">
+
+        📍 OPEN GOOGLE MAPS
+
+    </a>
+
+</section>
+
+
+<!-- =========================================
+     11. COUNTDOWN
+========================================= -->
+
+<section class="screen countdown-screen">
+
+    <h1 class="section-script">
+        Counting Down
+    </h1>
+
+    <p class="forever">
+        To Forever
+    </p>
+
+    <div class="tiny-heart">
+        ♥
+    </div>
+
+
+    <div class="countdown-grid">
+
+        <div class="count-box">
+
+            <strong id="days">
+                00
+            </strong>
+
+            <span>
+                DAYS
+            </span>
+
+        </div>
+
+
+        <div class="count-box">
+
+            <strong id="hours">
+                00
+            </strong>
+
+            <span>
+                HOURS
+            </span>
+
+        </div>
+
+
+        <div class="count-box">
+
+            <strong id="minutes">
+                00
+            </strong>
+
+            <span>
+                MINUTES
+            </span>
+
+        </div>
+
+
+        <div class="count-box">
+
+            <strong id="seconds">
+                00
+            </strong>
+
+            <span>
+                SECONDS
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     12. NO GIFTS
+========================================= -->
+
+<section class="screen cream-screen gifts-screen">
+
+    <div class="gift-icon">
+        🎁
+    </div>
+
+    <h1 class="section-script">
+        No Gifts Please
+    </h1>
+
+    <p class="gift-text">
+        Your Presence & Blessings<br>
+        Are The Greatest Gift
+    </p>
+
+    <div class="heart-divider">
+        ♥
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     13. WELCOME
+========================================= -->
+
+<section class="screen welcome-screen">
+
+    <div class="welcome-overlay">
+
+        <h1>
+            AWAITING TO
+        </h1>
+
+        <h2>
+            WELCOME YOU
+        </h2>
+
+        <div class="heart-divider">
+            ♥
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     14. FAMILY MEMBERS
+========================================= -->
+
+<section class="screen family-screen">
+
+    <h1 class="section-script">
+        Family Members
+    </h1>
+
+    <div class="family-divider">
+        ❧ ♥ ❧
+    </div>
+
+    <div class="family-list">
+
+        <p class="family-main">
+            Mr. & Mrs. Haji Mohd. Zahid
+        </p>
+
+        <p class="family-small">
+            S/O Haji Nizamuddin Shaikh
+        </p>
+
+        <p class="family-intro">
+            With Best Compliments
+        </p>
+
+        <div class="names-grid">
+
+            <span>♥ Hafiz Md. Shahid</span>
+            <span>♥ Md. Ali</span>
+
+            <span>♥ Md. Khalid</span>
+            <span>♥ Md. Ahsan</span>
+
+            <span>♥ Md. Rashid</span>
+            <span>♥ Md. Zakir</span>
+
+            <span>♥ Hafiz Md. Nasir</span>
+            <span>♥ Abdul Rahman</span>
+
+            <span>♥ Azeem Ahmad</span>
+            <span>♥ Md. Umar</span>
+
+            <span>♥ Md. Sajid</span>
+            <span>♥ Abu Bakar</span>
+
+            <span>♥ Md. Sharique</span>
+            <span>♥ Md. Asjad</span>
+
+        </div>
+
+        <p class="relatives">
+            Relatives & Friends
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     15. JAZAKALLAH
+========================================= -->
+
+<section class="screen jazakallah-screen">
+
+    <p class="arabic-jazak">
+        جَزَاكَ اللَّهُ خَيْرًا
+    </p>
+
+    <h1 class="section-script">
+        JazakAllah Khair
+    </h1>
+
+    <div class="gold-line">
+        ♥
+    </div>
+
+    <p>
+        LOOKING FORWARD TO<br>
+        CELEBRATING<br>
+        WITH YOU
+    </p>
+
+</section>
+
+
+<!-- =========================================
+     16. THANK YOU
+========================================= -->
+
+<section class="screen thankyou-screen">
+
+    <div class="moon">
+        ☾
+    </div>
+
+    <h1>
+        THANK YOU
+    </h1>
+
+    <div class="gold-line">
+        ♥
+    </div>
+
+    <p>
+        We can't wait to<br>
+        celebrate this beautiful day<br>
+        with you!
+    </p>
+
+    <div class="final-ornament">
+        ❧ ✦ ❧
+    </div>
+
+</section>
+
 
 </main>
 
 
-<!-- Music -->
-
-<audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<button id="musicButton">♪</button>
-
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
 
 <script src="script.js"></script>
 
 </body>
-</html>
+    </html>
